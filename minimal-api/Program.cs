@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IAdministradorServico, AdministradorServico>();
 
-builder.Services.AddDbContext<DbContext>(options =>
+builder.Services.AddDbContext<DbContexto>(options =>
 {
     options.UseMySql(
         builder.Configuration.GetConnectionString("mysql"),
