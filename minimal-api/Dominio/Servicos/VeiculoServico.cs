@@ -50,6 +50,7 @@ public class VeiculoServico : IVeiculoServico
         int itensPorPagina = 10;
         int pularItens = (pagina - 1) * itensPorPagina;
 
+        
         query = query.Skip(pularItens).Take(itensPorPagina);
 
         return query.ToList();
