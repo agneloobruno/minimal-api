@@ -18,6 +18,27 @@ public class AdministradorServico : IAdministradorServico
     {
         var adm = _contexto.Administradores.Where(a => a.Email == loginDTO.Email && a.Senha == loginDTO.Senha).FirstOrDefault();
         return adm;
-        
+
+    }
+
+    public Administrador Adicionar(Administrador administrador)
+    {
+        _contexto.Administradores.Add(administrador);
+        _contexto.SaveChanges();
+
+        return administrador;
+    }
+    
+    public List<Administrador> Todos(int? pagina)
+    {
+        int tamanhoPagina = 10;
+        int numeroPagina = pagina ?? 1;
+
+        var administradores = _contexto.Administradores
+            .Skip((numeroPagina - 1) * tamanhoPagina)
+            .Take(tamanhoPagina)
+            .ToList();
+
+        return administradores;
     }
 }
